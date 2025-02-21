@@ -1,0 +1,91 @@
+﻿@page "/client-measurements"
+@layout MainLayout
+@using AtTheSeams.Data.Services
+@using MudBlazor
+@using AtTheSeams.Components.Layout
+@using AtTheSeams.Data.Models
+@inject ClientLogic ClientService
+@inject AtTheSeams.Data.Connections.ClientContext Dbcontext
+
+<MudContainer>
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.h5">Add New Client Measurement</MudText>
+
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudTextField @bind-Value="newMeasurement.ClientId" Label="Client ID" Required="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudTextField @bind-Value="newMeasurement.A_ChestMeasurement" Label="Chest Measurement" />
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudTextField @bind-Value="newMeasurement.B_SeatMeasurement" Label="Seat Measurement" />
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudTextField @bind-Value="newMeasurement.C_WaistMeasurement" Label="Waist Measurement" />
+                </MudItem>
+            </MudGrid>
+
+            <MudButton OnClick="SaveNewMeasurement" Color="Color.Primary" StartIcon="add">Add Measurement</MudButton>
+        </MudCardContent>
+    </MudCard>
+    
+    <MudTable Items="@measurementList">
+        <HeaderContent>
+            <MudTr>
+                <MudTh Style="width: 50px;">Id</MudTh>
+                <MudTh Style="width: 150px;">Client ID</MudTh>
+                <MudTh Style="width: 120px;">Chest</MudTh>
+                <MudTh Style="width: 120px;">Seat</MudTh>
+                <MudTh Style="width: 120px;">Waist</MudTh>
+                <MudTh Style="width: 120px;">Trouser</MudTh>
+                <MudTh Style="width: 200px;">Actions</MudTh>
+            </MudTr>
+        </HeaderContent>
+        <RowTemplate Context="measurement">
+            <MudTableCell>@measurement.Id</MudTableCell>
+            <MudTableCell>@measurement.ClientId</MudTableCell>
+            <MudTableCell>@measurement.A_ChestMeasurement</MudTableCell>
+            <MudTableCell>@measurement.B_SeatMeasurement</MudTableCell>
+            <MudTableCell>@measurement.C_WaistMeasurement</MudTableCell>
+            <MudTableCell>@measurement.D_TrouserMeasurement</MudTableCell>
+            <MudTableCell>
+                <MudButton OnClick="() => DeleteMeasurement(measurement)" Color="Color.Error">Delete</MudButton>
+            </MudTableCell>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private List<ClientMeasurements> measurementList = new();
+    private ClientMeasurements newMeasurement = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadMeasurements();
+    }
+
+    private async Task LoadMeasurements()
+    {
+        measurementList = await ClientService.GetAllMeasurementsAsync() ?? new List<ClientMeasurements>();
+    }
+
+    private async Task SaveNewMeasurement()
+    {
+        if (newMeasurement.ClientId <= 0)
+        {
+            return; // Prevent adding without a client ID
+        }
+
+        await ClientService.AddClientMeasurementAsync(newMeasurement);
+        newMeasurement = new(); // Reset form
+        await LoadMeasurements();
+    }
+
+    private async Task DeleteMeasurement(ClientMeasurements measurement)
+    {
+        await ClientService.DeleteClientMeasurementAsync(measurement);
+        await LoadMeasurements();
+    }
+}

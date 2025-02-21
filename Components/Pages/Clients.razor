@@ -1,0 +1,113 @@
+﻿@page "/clients"
+@layout MainLayout
+@using AtTheSeams.Data.Services
+@using MudBlazor
+@using AtTheSeams.Components.Layout
+@using AtTheSeams.Data.Models
+@inject ClientLogic ClientService
+@inject AtTheSeams.Data.Connections.ClientContext Dbcontext
+
+
+<MudContainer>
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.h5">Add New Client</MudText>
+
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudTextField @bind-Value="newClient.Name" Label="Name" Required="true" />
+                </MudItem>
+            </MudGrid>
+
+            <MudButton OnClick="SaveNewClient" Color="Color.Primary" StartIcon="add">Add Client</MudButton>
+        </MudCardContent>
+    </MudCard>
+    
+    <MudTable Items="@clientList">
+        <ToolBarContent>
+            
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTr>
+                <MudTh Style="width: 50px;">Id</MudTh>
+                <MudTh Style="width: 150px;">Name</MudTh>
+                <MudTh Style="width: 120px;">Date</MudTh>
+                <MudTh Style="width: 200px;">Notes</MudTh>
+                
+            </MudTr>
+        </HeaderContent>
+        <RowTemplate Context="client">
+            <MudTableCell>@client.Id</MudTableCell>
+            <MudTableCell>@client.Name</MudTableCell>
+            <MudTableCell>@client.Date.ToShortDateString()</MudTableCell>
+            <MudTableCell>@client.Notes</MudTableCell>
+            <MudTableCell>
+                
+                <MudButton OnClick="() => DeleteClient(client)" Color="Color.Error">Delete</MudButton>
+            </MudTableCell>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private List<ClientInfo> clientList = new();
+
+    private ClientInfo newClient = new() { Date = DateTime.Now }; // Default new client
+
+
+
+    protected override async Task OnInitializedAsync()
+
+    {
+
+        await LoadClients();
+
+    }
+
+
+
+    private async Task LoadClients()
+
+    {
+
+        clientList = await ClientService.GetClientsAsync() ?? new List<ClientInfo>();
+
+    }
+
+
+
+    private async Task SaveNewClient()
+
+    {
+
+        if (string.IsNullOrWhiteSpace(newClient.Name))
+
+        {
+
+            return; // Prevent empty name
+
+        }
+
+
+
+        await ClientService.AddClientAsync(newClient);
+
+        newClient = new() { Date = DateTime.Now }; // Reset form
+
+        await LoadClients();
+
+    }
+
+
+
+    private async Task DeleteClient(ClientInfo client)
+
+    {
+
+        await ClientService.DeleteClientAsync(client);
+
+        await LoadClients();
+
+    }
+}
+

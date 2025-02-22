@@ -17,9 +17,14 @@
                 <MudItem xs="12" sm="6" md="4">
                     <MudTextField @bind-Value="newClient.Name" Label="Name" Required="true" />
                 </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudTextField @bind-Value="newClient.Notes" Label="Notes" />
+                </MudItem>
             </MudGrid>
 
-            <MudButton OnClick="SaveNewClient" Color="Color.Primary" StartIcon="add">Add Client</MudButton>
+
+
+            <MudButton OnClick="SaveNewClient" Variant="Variant.Filled" Size="Size.Large" Color="Color.Primary" StartIcon="add">Add Client</MudButton>
         </MudCardContent>
     </MudCard>
     
@@ -53,6 +58,10 @@
     private List<ClientInfo> clientList = new();
 
     private ClientInfo newClient = new() { Date = DateTime.Now }; // Default new client
+
+    private ClientMeasurements newMeasurement;
+
+
 
 
 

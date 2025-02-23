@@ -1,12 +1,12 @@
 # ["At The Seams"]
 
-REQUIRES THE REPO ATTHESEAMS.DATA
-https://github.com/Elijah-Cook-Code/AtTheSeams.Data.git
-(this contains DB, DATA MODELS, LOGIC, EF CORE + MIGRATIONS)
-The required repo above needs to be a project in the sln that if referanced by ATTHESEAMS main repo
-(looking for the easiest way to get it in the soulution without breaking the program)
+# REQUIRES THE REPO ATTHESEAMS.DATA
+# https://github.com/Elijah-Cook-Code/AtTheSeams.Data.git
+# (this contains DB, DATA MODELS, LOGIC, EF CORE + MIGRATIONS)
+# The required repo above needs to be a project in the sln that if referanced by ATTHESEAMS main repo
+# (looking for the easiest way to get it in the soulution without breaking the program)
 
-this is maybe the 3rd time starting this project other repos on my github have been previous attempts as well!
+# this is maybe the 3rd time starting this project other repos on my github have been previous attempts as well!
 
 ## 1. Project Overview
 
@@ -79,9 +79,9 @@ Asynchronous Operations
 
 ---
 
-## 6. Software Project Requirements
+## Software Project Requirements
 
-### 6.1 Application Structure
+### Application Structure
  
 Project Structure
     Components/Layout → Contains layout files (MainLayout.razor, NavMenu.razor).
@@ -91,14 +91,14 @@ Project Structure
     Data/Services → Business logic (ClientLogic.cs).
     MauiProgram.cs → Application startup, dependency injection, and database initialization.
 
-### 6.2 API Integration
+### API Integration
 
 - **API Usage:**  
   Describe the API you plan to integrate (e.g., a student-created API for weather information).  
 - **Integration Details:**  
   Explain how you will call the API and incorporate its data into your application (e.g., saving data to a SQLite database or JSON file).
 
-### 6.3 Database Interaction
+### Database Interaction
 
 Implementation Details
 

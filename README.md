@@ -1,12 +1,12 @@
 # ["At The Seams"]
 
 ## REQUIRES THE REPO ATTHESEAMS.DATA
-## https://github.com/Elijah-Cook-Code/AtTheSeams.Data.git
-## (this contains DB, DATA MODELS, LOGIC, EF CORE + MIGRATIONS)
-## The required repo above needs to be a project in the sln that if referanced by ATTHESEAMS main repo
-## (looking for the easiest way to get it in the soulution without breaking the program)
+  https://github.com/Elijah-Cook-Code/AtTheSeams.Data.git
+  (this contains DB, DATA MODELS, LOGIC, EF CORE + MIGRATIONS)
+  The required repo above needs to be a project in the sln that if referanced by ATTHESEAMS main repo
+  (looking for the easiest way to get it in the soulution without breaking the program)
 
-## this is maybe the 3rd time starting this project other repos on my github have been previous attempts as well!
+  this is maybe the 3rd time starting this project other repos on my github have been previous attempts as well!
 
 ## 1. Project Overview
 

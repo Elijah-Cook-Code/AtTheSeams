@@ -3,7 +3,7 @@
 ## REQUIRES THE REPO ATTHESEAMS.DATA
   https://github.com/Elijah-Cook-Code/AtTheSeams.Data.git
   (this contains DB, DATA MODELS, LOGIC, EF CORE + MIGRATIONS)
-  The required repo above needs to be a project in the sln that if referanced by ATTHESEAMS main repo
+  The required repo above needs to be a project in the sln that if referenced by ATTHESEAMS main repo
   (looking for the easiest way to get it in the soulution without breaking the program)
 
   this is maybe the 3rd time starting this project other repos on my github have been previous attempts as well!
@@ -61,21 +61,13 @@ Asynchronous Operations
 
 --- 
 
-- **Special Instructions:**  
-  Include any specific instructions for reviewers on how to run your project.
-
----
-
 ## 5. Visual Appeal
 
 - **Design & UX:**  
-  Explain how you have ensured your project is visually appealing. Consider the following:
-  - Consistent text styling (spell-checked, legible fonts)
-  - Clear and consistent design for headings, buttons, forms, and interactive elements
-  - Chosen color palette and font stack that create a polished, professional design
+
 
 - **Inspiration:**  
-  Briefly mention any apps or websites you researched for design inspiration.
+
 
 ---
 
@@ -94,9 +86,9 @@ Project Structure
 ### API Integration
 
 - **API Usage:**  
-  Describe the API you plan to integrate (e.g., a student-created API for weather information).  
+    -looking for a good idea to incorperate to this one, possibly something relating to image storage for clients 
 - **Integration Details:**  
-  Explain how you will call the API and incorporate its data into your application (e.g., saving data to a SQLite database or JSON file).
+
 
 ### Database Interaction
 
